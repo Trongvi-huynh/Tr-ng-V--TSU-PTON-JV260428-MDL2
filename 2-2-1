@@ -1,0 +1,24 @@
+CREATE SCHEMA MD2_2_1;
+
+USE MD2_2_1;
+
+CREATE TABLE person(
+	personId INT,
+	person_name VARCHAR(30),
+	person_age INT
+);
+
+-- Xóa bảng cũ nếu đã tồn tại để tránh lỗi trùng lặp
+DROP TABLE IF EXISTS person;
+
+-- Tạo lại bảng với cấu trúc chuẩn
+CREATE TABLE person (
+    personId INT PRIMARY KEY,         -- Khóa chính giúp định danh duy nhất mỗi người
+    person_name VARCHAR(50) NOT NULL, -- NOT NULL đảm bảo không được để trống tên
+    person_age INT,
+    person_DOB DATETIME,
+    person_gender CHAR(1),
+    -- Ràng buộc dữ liệu để đảm bảo tính toàn vẹn
+    CONSTRAINT chk_gender CHECK (person_gender IN ('M', 'F', 'O'))
+);
+
