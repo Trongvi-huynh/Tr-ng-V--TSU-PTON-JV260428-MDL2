@@ -1,0 +1,11 @@
+CREATE SCHEMA MDL2_2_2;
+
+USE MDL2_2_2;
+
+CREATE TABLE Products(
+	Products_ID INT PRIMARY KEY AUTO_INCREMENT,
+    Products_name VARCHAR(100) NOT NULL UNIQUE,
+    Products_price DECIMAL(10,2) not null check(product_price >0),
+    Product_quantity INT not null check(product_quantity >0)
+    
+);
